@@ -35,15 +35,11 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    systemProperty 'jasypt.encryptor.password', System.getProperty('jasypt.encryptor.password')
 }
 
 task copyGitSubmodule(type: Copy) {
     from './config'
     include '*.yml'
     into './src/main/resources'
-}
-
-tasks.named('test') {
-    useJUnitPlatform()
-    systemProperty 'jasypt.encryptor.password', System.getProperty('jasypt.encryptor.password')
 }
