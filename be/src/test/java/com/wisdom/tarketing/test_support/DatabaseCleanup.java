@@ -35,7 +35,7 @@ public class DatabaseCleanup implements InitializingBean {
         entityManager.flush();
         for (String tableName : tableNames) {
             entityManager.createNativeQuery(String.format("TRUNCATE TABLE `%s`", tableName)).executeUpdate();
-            entityManager.createNativeQuery(String.format("ALTER TABLE %s ALTER COLUMN id RESTART WITH 1", tableName))
+            entityManager.createNativeQuery(String.format("ALTER TABLE %s AUTO_INCREMENT = 1", tableName))
                     .executeUpdate();
         }
     }
