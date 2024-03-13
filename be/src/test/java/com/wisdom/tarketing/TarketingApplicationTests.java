@@ -1,13 +1,12 @@
 package com.wisdom.tarketing;
 
+import com.wisdom.tarketing.test_support.AcceptanceTest;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class TarketingApplicationTests {
+class TarketingApplicationTests extends AcceptanceTest {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
