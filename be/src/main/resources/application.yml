@@ -1,7 +1,7 @@
 spring:
   profiles:
     group:
-      local: localDB, jpa
-      test: testDB, jpa
-      active: local
+      local: localDB, jpa, jasypt
+      test: testDB, jpa, jasypt
+    active: local
 

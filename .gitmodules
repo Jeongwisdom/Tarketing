@@ -1,0 +1,3 @@
+[submodule "be/config"]
+	path = be/config
+	url = https://github.com/Jeongwisdom/tarketing-secrets.git
