@@ -5,8 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,10 +26,8 @@ public class Member {
     private String email;
     private String address;
     private LocalDate birth;
-    @Builder.Default
-    private Timestamp createdAt = Timestamp.from(Instant.now());
-    @Builder.Default
-    private String profileImg = "https://cdn-icons-png.flaticon.com/128/2815/2815428.png";
+    private Timestamp createdAt;
+    private String profileImg;
 
     @Builder
     private Member(String name, String nickname, String email, String address, LocalDate birth, Timestamp createdAt,
@@ -38,7 +37,7 @@ public class Member {
         this.email = email;
         this.address = address;
         this.birth = birth;
-        this.createdAt = createdAt;
-        this.profileImg = profileImg;
+        this.createdAt = createdAt == null ? Timestamp.valueOf(LocalDateTime.now(ZoneOffset.UTC)) : createdAt;
+        this.profileImg = profileImg == null ? "https://cdn-icons-png.flaticon.com/128/2815/2815428.png" : profileImg;
     }
 }
