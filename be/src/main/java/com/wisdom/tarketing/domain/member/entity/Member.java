@@ -1,5 +1,6 @@
 package com.wisdom.tarketing.domain.member.entity;
 
+import com.wisdom.tarketing.domain.member.dto.MemberUpdateRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,5 +40,10 @@ public class Member {
         this.birth = birth;
         this.createdAt = createdAt == null ? Timestamp.valueOf(LocalDateTime.now(ZoneOffset.UTC)) : createdAt;
         this.profileImg = profileImg == null ? "https://cdn-icons-png.flaticon.com/128/2815/2815428.png" : profileImg;
+    }
+
+    public void updateProfile(MemberUpdateRequest memberUpdateRequest) {
+        this.nickname = memberUpdateRequest.getNickname();
+        this.address = memberUpdateRequest.getAddress();
     }
 }

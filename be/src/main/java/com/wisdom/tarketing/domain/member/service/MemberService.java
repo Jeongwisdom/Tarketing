@@ -1,6 +1,7 @@
 package com.wisdom.tarketing.domain.member.service;
 
 import com.wisdom.tarketing.domain.member.dto.MemberResponse;
+import com.wisdom.tarketing.domain.member.dto.MemberUpdateRequest;
 import com.wisdom.tarketing.domain.member.entity.Member;
 import com.wisdom.tarketing.domain.member.repository.MemberRepository;
 import com.wisdom.tarketing.exception.CustomException;
@@ -23,5 +24,11 @@ public class MemberService {
     public Member getMember(Long memberId) {
         return memberRepository.findById(memberId)
                 .orElseThrow(() -> new CustomException(MemberErrorCode.MEMBER_NOT_FOUND));
+    }
+
+    @Transactional
+    public void updateProfile(Long memberId, MemberUpdateRequest memberUpdateRequest) {
+        Member member = getMember(memberId);
+        member.updateProfile(memberUpdateRequest);
     }
 }
